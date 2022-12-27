@@ -39,94 +39,67 @@
     <div>
       <h1>門松を作ろう</h1>
 
-      <div class="items">
-        <img src="./items/bamboo3.png" class="draggable item" />
-        <img src="./items/dodai3.png" class="draggable item" />
-        <img src="./items/flower_ooinunofuguri.png" class="draggable item" />
-        <img src="./items/fruit_dekopon.png" class="draggable item" />
-        <img src="./items/fruit_momo.png" class="draggable item" />
-        <img src="./items/fruit_reitou_mikan.png" class="draggable item" />
-        <img src="./items/fruit_ringo.png" class="draggable item" />
+      <input type="button" value="ガチャる！" onclick="gacha()"/>
+
+      <div id="images" class="items">
+        <img src="./items/bamboo3.png" class="item" />
+        <img src="./items/dodai3.png" class="item" />
+        <img src="./items/flower_ooinunofuguri.png" class="item" />
+        <img src="./items/fruit_dekopon.png" class="item" />
+        <img src="./items/fruit_momo.png" class="item" />
+        <img src="./items/fruit_reitou_mikan.png" class="item" />
+        <img src="./items/fruit_ringo.png" class="item" />
         <img
           src="./items/fruit_slice_grapefruit_pink.png"
-          class="draggable item"
+          class="item"
         />
-        <img src="./items/fruit_slice10_orange.png" class="draggable item" />
-        <img src="./items/fruit_suika_kodama.png" class="draggable item" />
-        <img src="./items/kazari3.png" class="draggable item" />
-        <img src="./items/nenga_mark01_matsu.png" class="draggable item" />
-        <img src="./items/nenga_mark02_take.png" class="draggable item" />
-        <img src="./items/nenga_mark03_ume.png" class="draggable item" />
-        <img src="./items/nenga_mark04_tai.png" class="draggable item" />
-        <img src="./items/nenga_mark05_tsuru.png" class="draggable item" />
-        <img src="./items/nenga_mark06_kame.png" class="draggable item" />
-        <img src="./items/nenga_mark07_fujisan.png" class="draggable item" />
-        <img src="./items/nenga_mark08_taka.png" class="draggable item" />
-        <img src="./items/nenga_mark09_nasu.png" class="draggable item" />
+        <img src="./items/fruit_slice10_orange.png" class="item" />
+        <img src="./items/fruit_suika_kodama.png" class="item" />
+        <img src="./items/kazari3.png" class="item" />
+        <img src="./items/nenga_mark01_matsu.png" class="item" />
+        <img src="./items/nenga_mark02_take.png" class="item" />
+        <img src="./items/nenga_mark03_ume.png" class="item" />
+        <img src="./items/nenga_mark04_tai.png" class="item" />
+        <img src="./items/nenga_mark05_tsuru.png" class="item" />
+        <img src="./items/nenga_mark06_kame.png" class="item" />
+        <img src="./items/nenga_mark07_fujisan.png" class="item" />
+        <img src="./items/nenga_mark08_taka.png" class="item" />
+        <img src="./items/nenga_mark09_nasu.png" class="item" />
         <img
           src="./items/nenga_mark10_hatsuhinode.png"
-          class="draggable item"
+          class="item"
         />
-        <img src="./items/nenga_mark11_hagoita.png" class="draggable item" />
-        <img src="./items/nenga_mark12_sensu.png" class="draggable item" />
-        <img src="./items/nenga_mark13_manekineko.png" class="draggable item" />
-        <img src="./items/nenga_mark14_daruma.png" class="draggable item" />
-        <img src="./items/nenga_mark15_koma.png" class="draggable item" />
-        <img src="./items/nenga_mark16_koduchi.png" class="draggable item" />
-        <img src="./items/nenga_mark17_gunbai.png" class="draggable item" />
-        <img src="./items/nenga_mark19_hyoutan.png" class="draggable item" />
+        <img src="./items/nenga_mark11_hagoita.png" class="item" />
+        <img src="./items/nenga_mark12_sensu.png" class="item" />
+        <img src="./items/nenga_mark13_manekineko.png" class="item" />
+        <img src="./items/nenga_mark14_daruma.png" class="item" />
+        <img src="./items/nenga_mark15_koma.png" class="item" />
+        <img src="./items/nenga_mark16_koduchi.png" class="item" />
+        <img src="./items/nenga_mark17_gunbai.png" class="item" />
+        <img src="./items/nenga_mark19_hyoutan.png" class="item" />
         <img
           src="./items/nenga_mark20_kagamimochi.png"
-          class="draggable item"
+          class="item"
         />
-        <img src="./items/nenga_mark21_hamaya.png" class="draggable item" />
-        <img src="./items/nenga_mark22_shishimai.png" class="draggable item" />
-        <img src="./items/nenga_mark23_tako.png" class="draggable item" />
-        <img src="./items/nenga_mark24_takarabune.png" class="draggable item" />
+        <img src="./items/nenga_mark21_hamaya.png" class="item" />
+        <img src="./items/nenga_mark22_shishimai.png" class="item" />
+        <img src="./items/nenga_mark23_tako.png" class="item" />
+        <img src="./items/nenga_mark24_takarabune.png" class="item" />
         <img
           src="./items/season_character1_spring_sakura.png"
-          class="draggable item"
+          class="item"
         />
         <img
           src="./items/season_character2_summer_himawari.png"
-          class="draggable item"
+          class="item"
         />
-        <img src="./items/syougatsu_kadomatsu.png" class="draggable item" />
-        <img src="./items/bamboo1.png" class="draggable item" />
-        <img src="./items/bamboo2.png" class="draggable item" />
-        <img src="./items/dodai1.png" class="draggable item" />
-        <img src="./items/kazari1.png" class="draggable item" />
-        <img src="./items/kazari2.png" class="draggable item" />
-        <img src="./items/dodai2.png" class="draggable item" />
-
-        <img src="./items/onepiece20_santaisyou.png" class="draggable item" />
-        <img
-          src="./items/onepiece19_kurohige_teach2.png"
-          class="draggable item"
-        />
-
-        <img src="./items/onepiece18_linlin_kaido.png" class="disabled item" />
-        <img src="./items/onepiece17_doflamingo.png" class="disabled item" />
-        <img src="./items/onepiece16_moria.png" class="disabled item" />
-        <img src="./items/onepiece15_lucci.png" class="disabled item" />
-        <img src="./items/onepiece14_enel.png" class="disabled item" />
-        <img src="./items/onepiece13_crocodile.png" class="disabled item" />
-        <img src="./items/onepiece12_buggy.png" class="disabled item" />
-        <img src="./items/onepiece11_arlong.png" class="disabled item" />
-        <img src="./items/onepiece10_jinbe.png" class="disabled item" />
-        <img src="./items/onepiece09_brook.png" class="disabled item" />
-        <img src="./items/onepiece08_franky.png" class="disabled item" />
-        <img src="./items/onepiece07_robin.png" class="disabled item" />
-        <img src="./items/onepiece06_chopper.png" class="disabled item" />
-        <img src="./items/onepiece05_sanji.png" class="disabled item" />
-        <img
-          src="./items/onepiece04_usopp_sogeking.png"
-          class="disabled item"
-        />
-        <img src="./items/onepiece03_nami.png" class="disabled item" />
-        <img src="./items/onepiece02_zoro_bandana.png" class="disabled item" />
-        <img src="./items/onepiece01_luffy.png" class="disabled item" />
-
+        <img src="./items/syougatsu_kadomatsu.png" class="item" />
+        <img src="./items/bamboo1.png" class="item" />
+        <img src="./items/bamboo2.png" class="item" />
+        <img src="./items/dodai1.png" class="item" />
+        <img src="./items/kazari1.png" class="item" />
+        <img src="./items/kazari2.png" class="item" />
+        <img src="./items/dodai2.png" class="item" />
         <div class="print"></div>
         <button onclick="previewPrint();">できた</button>
       </div>
@@ -186,6 +159,16 @@
 
       function previewPrint() {
         window.print();
+      }
+
+      function gacha () {
+        // ランダムで選んだ画像を動かせるようにする
+        const images = document.getElementById('images');
+        const images_count = images.childElementCount;
+        const n = Math.floor( Math.random() * (images_count - 1) );
+        const target = document.getElementById('images').children[n];
+        target.classList.add('draggable');
+        target.disabled = false;
       }
     </script>
   </body>
