@@ -5,6 +5,10 @@
     <title>Drag Drop Demo</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script>
     <style>
+      body {
+        font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3",
+          "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+      }
       .print {
         width: 1000px;
         height: 800px;
@@ -61,10 +65,10 @@
       .stripe_1.active {
         display: initial;
       }
+      .break {
+      }
 
       @media print {
-        .items img {
-        }
       }
     </style>
   </head>
@@ -239,8 +243,9 @@
           name="paid"
           class="disabled item"
         />
-        <div name="paid" class="print"></div>
         <button onclick="previewPrint();">できた</button>
+        <div class="break"></div>
+        <div name="paid" class="print"></div>
       </div>
 
       <div id="stripe" class="stripe_1"></div>
