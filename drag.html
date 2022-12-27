@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Drag Drop Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script>
+    <style>
+      .print {
+        width: 1000px;
+        height: 800px;
+        border: 1px solid #ddd;
+      }
+
+      .items {
+        /* display: flex; */
+      }
+
+      .items .item {
+        width: 100px;
+        height: auto;
+      }
+
+      @media print {
+        .noprint {
+          display: none;
+        }
+        .noprint .print {
+          display: initial;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>門松を作ろう</h1>
+
+      <div class="items">
+        <img src="./items/bamboo3.png" class="draggable item" />
+        <img src="./items/dodai3.png" class="draggable item" />
+        <img src="./items/flower_ooinunofuguri.png" class="draggable item" />
+        <img src="./items/fruit_dekopon.png" class="draggable item" />
+        <img src="./items/fruit_momo.png" class="draggable item" />
+        <img src="./items/fruit_reitou_mikan.png" class="draggable item" />
+        <img src="./items/fruit_ringo.png" class="draggable item" />
+        <img
+          src="./items/fruit_slice_grapefruit_pink.png"
+          class="draggable item"
+        />
+        <img src="./items/fruit_slice10_orange.png" class="draggable item" />
+        <img src="./items/fruit_suika_kodama.png" class="draggable item" />
+        <img src="./items/kazari3.png" class="draggable item" />
+        <img src="./items/nenga_mark01_matsu.png" class="draggable item" />
+        <img src="./items/nenga_mark02_take.png" class="draggable item" />
+        <img src="./items/nenga_mark03_ume.png" class="draggable item" />
+        <img src="./items/nenga_mark04_tai.png" class="draggable item" />
+        <img src="./items/nenga_mark05_tsuru.png" class="draggable item" />
+        <img src="./items/nenga_mark06_kame.png" class="draggable item" />
+        <img src="./items/nenga_mark07_fujisan.png" class="draggable item" />
+        <img src="./items/nenga_mark08_taka.png" class="draggable item" />
+        <img src="./items/nenga_mark09_nasu.png" class="draggable item" />
+        <img
+          src="./items/nenga_mark10_hatsuhinode.png"
+          class="draggable item"
+        />
+        <img src="./items/nenga_mark11_hagoita.png" class="draggable item" />
+        <img src="./items/nenga_mark12_sensu.png" class="draggable item" />
+        <img src="./items/nenga_mark13_manekineko.png" class="draggable item" />
+        <img src="./items/nenga_mark14_daruma.png" class="draggable item" />
+        <img src="./items/nenga_mark15_koma.png" class="draggable item" />
+        <img src="./items/nenga_mark16_koduchi.png" class="draggable item" />
+        <img src="./items/nenga_mark17_gunbai.png" class="draggable item" />
+        <img src="./items/nenga_mark19_hyoutan.png" class="draggable item" />
+        <img
+          src="./items/nenga_mark20_kagamimochi.png"
+          class="draggable item"
+        />
+        <img src="./items/nenga_mark21_hamaya.png" class="draggable item" />
+        <img src="./items/nenga_mark22_shishimai.png" class="draggable item" />
+        <img src="./items/nenga_mark23_tako.png" class="draggable item" />
+        <img src="./items/nenga_mark24_takarabune.png" class="draggable item" />
+        <img
+          src="./items/season_character1_spring_sakura.png"
+          class="draggable item"
+        />
+        <img
+          src="./items/season_character2_summer_himawari.png"
+          class="draggable item"
+        />
+        <img src="./items/syougatsu_kadomatsu.png" class="draggable item" />
+        <img src="./items/bamboo1.png" class="draggable item" />
+        <img src="./items/bamboo2.png" class="draggable item" />
+        <img src="./items/dodai1.png" class="draggable item" />
+        <img src="./items/kazari1.png" class="draggable item" />
+        <img src="./items/kazari2.png" class="draggable item" />
+        <img src="./items/dodai2.png" class="draggable item" />
+        <div class="print"></div>
+      </div>
+    </div>
+
+    <script>
+      // target elements with the "draggable" class
+      interact(".draggable").draggable({
+        // enable inertial throwing
+        inertia: true,
+        // keep the element within the area of it's parent
+        restrict: {
+          restriction: "parent",
+          endOnly: true,
+          elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
+        },
+        // enable autoScroll
+        autoScroll: true,
+
+        onstart: function (event) {
+          console.log("onstart");
+        },
+
+        // call this function on every dragmove event
+        onmove: dragMoveListener,
+        // call this function on every dragend event
+        onend: function (event) {
+          console.log("onend");
+          // var textEl = event.target.querySelector('p');
+
+          // textEl && (textEl.textContent =
+          //     'moved a distance of '
+          //     + (Math.sqrt(event.dx * event.dx +
+          //         event.dy * event.dy)|0) + 'px');
+        },
+      });
+
+      function dragMoveListener(event) {
+        console.log("dragMoveListener");
+        var target = event.target,
+          // keep the dragged position in the data-x/data-y attributes
+          x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx,
+          y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
+
+        // translate the element
+        target.style.webkitTransform = target.style.transform =
+          "translate(" + x + "px, " + y + "px)";
+
+        // update the position attributes
+        target.setAttribute("data-x", x);
+        target.setAttribute("data-y", y);
+      }
+
+      function print() {
+        window.print();
+      }
+    </script>
+  </body>
+</html>
