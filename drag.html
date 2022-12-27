@@ -29,6 +29,39 @@
         filter: grayscale(1); /* W3C */
       }
 
+      .stripe_1 {
+        display: none;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 2000px;
+        opacity: 0.8;
+        background: linear-gradient(
+          -45deg,
+          #7d98ce 25%,
+          #c6e6fb 25%,
+          #c6e6fb 50%,
+          #7d98ce 50%,
+          #7d98ce 75%,
+          #c6e6fb 75%,
+          #c6e6fb
+        );
+        background-size: 40px 40px;
+        animation: anime_stripe_1 0.8s infinite linear;
+      }
+      @keyframes anime_stripe_1 {
+        0% {
+          background-position-x: 0;
+        }
+        100% {
+          background-position-x: -40px;
+        }
+      }
+
+      .stripe_1.active {
+        display: initial;
+      }
+
       @media print {
         .items img {
         }
@@ -100,37 +133,114 @@
         <img src="./items/dodai2.png" class="draggable item" />
         <div>
           <h2>以下は課金アイテムです！お金払ってガチャしてね！</h2>
-          <input type="button" value="ガチャる！" onclick="gacha()"/>
+          <input type="button" value="ガチャる！" onclick="gachaProc()" />
         </div>
-        <img src="./items/onepiece20_santaisyou.png" name="paid" name="paid" class="disabled item" />
+        <img
+          src="./items/onepiece20_santaisyou.png"
+          name="paid"
+          name="paid"
+          class="disabled item"
+        />
         <img
           src="./items/onepiece19_kurohige_teach2.png"
-          name="paid" class="disabled item"
+          name="paid"
+          class="disabled item"
         />
-        <img src="./items/onepiece18_linlin_kaido.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece17_doflamingo.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece16_moria.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece15_lucci.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece14_enel.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece13_crocodile.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece12_buggy.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece11_arlong.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece10_jinbe.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece09_brook.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece08_franky.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece07_robin.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece06_chopper.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece05_sanji.png" name="paid" class="disabled item" />
+        <img
+          src="./items/onepiece18_linlin_kaido.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece17_doflamingo.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece16_moria.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece15_lucci.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece14_enel.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece13_crocodile.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece12_buggy.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece11_arlong.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece10_jinbe.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece09_brook.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece08_franky.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece07_robin.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece06_chopper.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece05_sanji.png"
+          name="paid"
+          class="disabled item"
+        />
         <img
           src="./items/onepiece04_usopp_sogeking.png"
-          name="paid" class="disabled item"
+          name="paid"
+          class="disabled item"
         />
-        <img src="./items/onepiece03_nami.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece02_zoro_bandana.png" name="paid" class="disabled item" />
-        <img src="./items/onepiece01_luffy.png" name="paid" class="disabled item" />
+        <img
+          src="./items/onepiece03_nami.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece02_zoro_bandana.png"
+          name="paid"
+          class="disabled item"
+        />
+        <img
+          src="./items/onepiece01_luffy.png"
+          name="paid"
+          class="disabled item"
+        />
         <div name="paid" class="print"></div>
         <button onclick="previewPrint();">できた</button>
       </div>
+
+      <div id="stripe" class="stripe_1"></div>
     </div>
 
     <script>
@@ -189,14 +299,24 @@
         window.print();
       }
 
-      function gacha () {
+      function gacha() {
         // ランダムで選んだ画像を動かせるようにする
-        const images = document.getElementsByName('paid');
+        const images = document.getElementsByName("paid");
         const images_count = images.length;
-        const n = Math.floor( Math.random() * (images_count - 1) );
+        const n = Math.floor(Math.random() * (images_count - 1));
         const target = images[n];
-        target.classList.add('draggable');
-        target.classList.remove('disabled');
+        target.classList.add("draggable");
+        target.classList.remove("disabled");
+      }
+
+      async function gachaProc() {
+        const stripe = document.getElementById("stripe");
+        stripe.classList.add("active");
+
+        await setTimeout(() => {
+          gacha();
+          stripe.classList.remove("active");
+        }, 1200);
       }
     </script>
   </body>
