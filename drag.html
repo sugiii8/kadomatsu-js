@@ -98,42 +98,37 @@
         <img src="./items/kazari1.png" class="draggable item" />
         <img src="./items/kazari2.png" class="draggable item" />
         <img src="./items/dodai2.png" class="draggable item" />
-      </div>
-      <div>
-        <h2>以下は課金アイテムです！お金払ってガチャしてね！</h2>
-        <input type="button" value="ガチャる！" onclick="gacha()"/>
-      </div>
-      <div id="paid_images" class="items">
-        <img src="./items/onepiece20_santaisyou.png" class="disabled item" />
+        <div>
+          <h2>以下は課金アイテムです！お金払ってガチャしてね！</h2>
+          <input type="button" value="ガチャる！" onclick="gacha()"/>
+        </div>
+        <img src="./items/onepiece20_santaisyou.png" name="paid" name="paid" class="disabled item" />
         <img
           src="./items/onepiece19_kurohige_teach2.png"
-          class="disabled item"
+          name="paid" class="disabled item"
         />
-
-        <img src="./items/onepiece18_linlin_kaido.png" class="disabled item" />
-        <img src="./items/onepiece17_doflamingo.png" class="disabled item" />
-        <img src="./items/onepiece16_moria.png" class="disabled item" />
-        <img src="./items/onepiece15_lucci.png" class="disabled item" />
-        <img src="./items/onepiece14_enel.png" class="disabled item" />
-        <img src="./items/onepiece13_crocodile.png" class="disabled item" />
-        <img src="./items/onepiece12_buggy.png" class="disabled item" />
-        <img src="./items/onepiece11_arlong.png" class="disabled item" />
-        <img src="./items/onepiece10_jinbe.png" class="disabled item" />
-        <img src="./items/onepiece09_brook.png" class="disabled item" />
-        <img src="./items/onepiece08_franky.png" class="disabled item" />
-        <img src="./items/onepiece07_robin.png" class="disabled item" />
-        <img src="./items/onepiece06_chopper.png" class="disabled item" />
-        <img src="./items/onepiece05_sanji.png" class="disabled item" />
+        <img src="./items/onepiece18_linlin_kaido.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece17_doflamingo.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece16_moria.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece15_lucci.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece14_enel.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece13_crocodile.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece12_buggy.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece11_arlong.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece10_jinbe.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece09_brook.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece08_franky.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece07_robin.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece06_chopper.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece05_sanji.png" name="paid" class="disabled item" />
         <img
           src="./items/onepiece04_usopp_sogeking.png"
-          class="disabled item"
+          name="paid" class="disabled item"
         />
-        <img src="./items/onepiece03_nami.png" class="disabled item" />
-        <img src="./items/onepiece02_zoro_bandana.png" class="disabled item" />
-        <img src="./items/onepiece01_luffy.png" class="disabled item" />
-      </div>
-      <div>
-        <div class="print"></div>
+        <img src="./items/onepiece03_nami.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece02_zoro_bandana.png" name="paid" class="disabled item" />
+        <img src="./items/onepiece01_luffy.png" name="paid" class="disabled item" />
+        <div name="paid" class="print"></div>
         <button onclick="previewPrint();">できた</button>
       </div>
     </div>
@@ -196,10 +191,10 @@
 
       function gacha () {
         // ランダムで選んだ画像を動かせるようにする
-        const images = document.getElementById('paid_images');
-        const images_count = images.childElementCount;
+        const images = document.getElementsByName('paid');
+        const images_count = images.length;
         const n = Math.floor( Math.random() * (images_count - 1) );
-        const target = images.children[n];
+        const target = images[n];
         target.classList.add('draggable');
         target.classList.remove('disabled');
       }
