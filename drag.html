@@ -20,6 +20,15 @@
         height: auto;
       }
 
+      .items .item.disabled {
+        width: 100px;
+        height: auto;
+        opacity: 0.4;
+        -webkit-filter: grayscale(1); /* Webkit */
+        filter: gray; /* IE6-9 */
+        filter: grayscale(1); /* W3C */
+      }
+
       @media print {
         .noprint {
           display: none;
@@ -93,12 +102,41 @@
         <img src="./items/kazari1.png" class="draggable item" />
         <img src="./items/kazari2.png" class="draggable item" />
         <img src="./items/dodai2.png" class="draggable item" />
+
+        <img src="./items/onepiece20_santaisyou.png" class="draggable item" />
+        <img
+          src="./items/onepiece19_kurohige_teach2.png"
+          class="draggable item"
+        />
+
+        <img src="./items/onepiece18_linlin_kaido.png" class="disabled item" />
+        <img src="./items/onepiece17_doflamingo.png" class="disabled item" />
+        <img src="./items/onepiece16_moria.png" class="disabled item" />
+        <img src="./items/onepiece15_lucci.png" class="disabled item" />
+        <img src="./items/onepiece14_enel.png" class="disabled item" />
+        <img src="./items/onepiece13_crocodile.png" class="disabled item" />
+        <img src="./items/onepiece12_buggy.png" class="disabled item" />
+        <img src="./items/onepiece11_arlong.png" class="disabled item" />
+        <img src="./items/onepiece10_jinbe.png" class="disabled item" />
+        <img src="./items/onepiece09_brook.png" class="disabled item" />
+        <img src="./items/onepiece08_franky.png" class="disabled item" />
+        <img src="./items/onepiece07_robin.png" class="disabled item" />
+        <img src="./items/onepiece06_chopper.png" class="disabled item" />
+        <img src="./items/onepiece05_sanji.png" class="disabled item" />
+        <img
+          src="./items/onepiece04_usopp_sogeking.png"
+          class="disabled item"
+        />
+        <img src="./items/onepiece03_nami.png" class="disabled item" />
+        <img src="./items/onepiece02_zoro_bandana.png" class="disabled item" />
+        <img src="./items/onepiece01_luffy.png" class="disabled item" />
+
         <div class="print"></div>
       </div>
     </div>
 
     <script>
-      applyDraggable()
+      applyDraggable();
 
       function applyDraggable() {
         // target elements with the "draggable" class
