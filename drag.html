@@ -30,11 +30,7 @@
       }
 
       @media print {
-        .noprint {
-          display: none;
-        }
-        .noprint .print {
-          display: initial;
+        .items img {
         }
       }
     </style>
@@ -132,6 +128,7 @@
         <img src="./items/onepiece01_luffy.png" class="disabled item" />
 
         <div class="print"></div>
+        <button onclick="previewPrint();">できた</button>
       </div>
     </div>
 
@@ -187,7 +184,7 @@
         target.setAttribute("data-y", y);
       }
 
-      function print() {
+      function previewPrint() {
         window.print();
       }
     </script>
