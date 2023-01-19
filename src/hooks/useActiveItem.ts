@@ -1,19 +1,9 @@
 import interact from "interactjs";
-import { RefObject, useEffect } from "react";
+import { RefObject, useCallback } from "react";
 
-export const useInteract = (
-  element: RefObject<HTMLDivElement>,
-  itemPurchased: boolean
-) => {
-  const targetElement = element.current as HTMLElement;
-
-  useEffect(() => {
+export const useActiveItem = () => {
+  const enableItem = useCallback((targetElement: HTMLElement) => {
     if (!targetElement) {
-      return;
-    }
-
-    if (!itemPurchased) {
-      console.log("not purchased");
       return;
     }
 
@@ -47,5 +37,19 @@ export const useInteract = (
             ).toFixed(2) +
             "px");
       });
-  }, [itemPurchased]);
+
+    targetElement.classList.add("active");
+    console.log("sss", targetElement.classList);
+  }, []);
+
+  const disableItem = useCallback((targetElement: HTMLElement) => {
+    if (!targetElement) {
+      return;
+    }
+
+    interact(targetElement).unset();
+    targetElement.removeAttribute("style");
+  }, []);
+
+  return { enableItem, disableItem };
 };

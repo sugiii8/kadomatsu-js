@@ -1,6 +1,6 @@
-import { useInteract } from "@/hooks/useInteract";
+import { useActiveItem } from "@/hooks/useActiveItem";
 import { useMoney } from "@/hooks/useMoney";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type ItemProps = {
   path: string;
@@ -13,7 +13,7 @@ const Item: React.FC<ItemProps> = ({ path, amount }) => {
   const [paymentAmount, setPaymentAmount] = useState<null | number>(null);
 
   // interactJS
-  useInteract(itemRef, isItemPurchased);
+  const { enableItem, disableItem } = useActiveItem();
 
   // 支払い処理
   useMoney(paymentAmount);
@@ -22,21 +22,29 @@ const Item: React.FC<ItemProps> = ({ path, amount }) => {
     if (window.confirm("購入しますか？")) {
       setIsItemPurchased(true);
       setPaymentAmount(amount);
+
+      const targetElement = itemRef.current as HTMLElement;
+      enableItem(targetElement);
+    }
+  };
+
+  const handleCancel = () => {
+    if (window.confirm("売却しますか？")) {
+      const targetElement = itemRef.current as HTMLElement;
+      setIsItemPurchased(false);
+      setPaymentAmount(-amount);
+      disableItem(targetElement);
     }
   };
 
   return (
     <>
-      <div>
+      <div className="my-4 mx-2">
         <div
           ref={itemRef}
-          className={`p-2 m-1 cursor-pointer ${
-            isItemPurchased ? "" : "opacity-20"
-          }`}
+          className={`cursor-pointer ${isItemPurchased ? "" : "opacity-20"}`}
         >
-          <div>
-            <img src={path} alt="" width={100} />
-          </div>
+          <img className="block" src={path} alt="" width={100} />
         </div>
         <div className="flex justify-center">
           <div className="text-center">{amount}</div>
@@ -47,11 +55,25 @@ const Item: React.FC<ItemProps> = ({ path, amount }) => {
             onClick={() => {
               handlePurchase(amount);
             }}
-            className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${
+            className={`block bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded ${
               isItemPurchased ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
             購入
+          </button>
+        </div>
+
+        <div className="flex justify-center">
+          <button
+            disabled={!isItemPurchased}
+            onClick={() => {
+              handleCancel();
+            }}
+            className={`block mt-2 bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded ${
+              !isItemPurchased ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
+            売却
           </button>
         </div>
       </div>
