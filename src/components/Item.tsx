@@ -1,5 +1,5 @@
 import { useActiveItem } from "@/hooks/useActiveItem";
-import { useMoney } from "@/hooks/useMoney";
+import { useWallet } from "@/hooks/useWallet";
 import { useEffect, useRef, useState } from "react";
 
 type ItemProps = {
@@ -10,18 +10,17 @@ type ItemProps = {
 const Item: React.FC<ItemProps> = ({ path, amount }) => {
   const itemRef = useRef<HTMLDivElement>(null);
   const [isItemPurchased, setIsItemPurchased] = useState(false);
-  const [paymentAmount, setPaymentAmount] = useState<null | number>(null);
 
   // interactJS
   const { enableItem, disableItem } = useActiveItem();
 
   // 支払い処理
-  useMoney(paymentAmount);
+  const { payMoney } = useWallet();
 
   const handlePurchase = (amount: number) => {
     if (window.confirm("購入しますか？")) {
       setIsItemPurchased(true);
-      setPaymentAmount(amount);
+      payMoney(amount);
 
       const targetElement = itemRef.current as HTMLElement;
       enableItem(targetElement);
@@ -32,7 +31,7 @@ const Item: React.FC<ItemProps> = ({ path, amount }) => {
     if (window.confirm("売却しますか？")) {
       const targetElement = itemRef.current as HTMLElement;
       setIsItemPurchased(false);
-      setPaymentAmount(-amount);
+      payMoney(-amount);
       disableItem(targetElement);
     }
   };
